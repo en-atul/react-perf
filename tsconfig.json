@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-        "target": "ES6",
+        "target": "ES2018",
+        "lib": ["ES2018", "DOM", "DOM.Iterable"],
         "module": "ESNext",
         "jsx": "react-jsx",
         "baseUrl": "./src",
@@ -12,7 +13,12 @@
         "esModuleInterop": true,
         "moduleResolution": "node",
         "skipLibCheck": true,
-        "strict": true
+        "strict": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true
     },
     "include": [
         "src"
