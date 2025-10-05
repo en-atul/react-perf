@@ -206,10 +206,8 @@ export function PerformanceNavigation() {
   return (
     <div className="performance-navigation">
       <div className="title-container">
-        <h1 className="title-container-t">
-          🚀 React Performance Best Practices
-        </h1>
-        <p>Explore advanced techniques to optimize your React applications</p>
+        <h1 className="title-container-t">🚀 React Performance Playbook</h1>
+        <p>Faster loads, smoother interactions, and smaller bundles—practical techniques that scale.</p>
       </div>
 
       <div className="navigation-controls">

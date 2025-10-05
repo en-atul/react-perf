@@ -121,9 +121,7 @@ export function ModalTriggerPoint({
 
   return (
     <button
-      className={`on-demand-prefetch-btn ${className} ${
-        isPreloading ? "preloading" : ""
-      }`}
+      className={`on-demand-prefetch-btn`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
