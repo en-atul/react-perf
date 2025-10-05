@@ -7,6 +7,12 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: './src/index.tsx',
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/', 
+    clean: true,
+  },
   devServer: {
     hot: true,
     open: true,
