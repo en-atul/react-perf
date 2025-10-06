@@ -5,6 +5,7 @@ import React, {
   useRef,
   useEffect,
 } from "react";
+import { GitHubCard } from "@/components";
 import "./OnDemandPrefetch.scss";
 
 const AsyncHeavyComponentModal = React.lazy(() =>
@@ -178,6 +179,13 @@ export function OnDemandPrefetchDemo() {
           </ul>
         </div>
       </div>
+
+      <GitHubCard
+        repository="en-atul/react-perf"
+        filePath="src/topics/performance/prefetch/on-demand/index.tsx"
+        title="View Implementation Code"
+        description="Explore the complete source code with intelligent preloading logic"
+      />
 
       <ModalTriggerPoint
         onHoverStart={() => console.log("Starting background preload...")}
