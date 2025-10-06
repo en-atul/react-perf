@@ -214,7 +214,7 @@ export function PerformanceNavigation() {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search performance topics..."
+            placeholder="Search topics..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"

@@ -13,30 +13,30 @@ const AsyncHeavyComponentModal = React.lazy(() =>
   ).then((module) => ({ default: module.default }))
 );
 
+
 const preloadComponent = (importFunction: () => Promise<any>) => {
   return importFunction();
 };
 
-const cancelPreload = (preloadPromise: Promise<any> | null) => {
-  return null;
-};
-
-// On-demand prefetch hook
 export function useOnDemandPrefetch() {
   const [isPreloading, setIsPreloading] = useState(false);
   const [preloadPromise, setPreloadPromise] = useState<Promise<any> | null>(
     null
   );
   const preloadTimeoutRef = useRef<number | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   const startPreload = useCallback(
     (importFunction: () => Promise<any>, delay = 0) => {
-      // Clear any existing timeout
       if (preloadTimeoutRef.current) {
         clearTimeout(preloadTimeoutRef.current);
       }
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
 
-      // Set a delay before starting preload (optional)
+      abortControllerRef.current = new AbortController();
+
       preloadTimeoutRef.current = setTimeout(() => {
         setIsPreloading(true);
         const promise = preloadComponent(importFunction);
@@ -44,12 +44,16 @@ export function useOnDemandPrefetch() {
 
         promise
           .then(() => {
-            setIsPreloading(false);
-            setPreloadPromise(null);
+            if (!abortControllerRef.current?.signal.aborted) {
+              setIsPreloading(false);
+              setPreloadPromise(null);
+            }
           })
           .catch(() => {
-            setIsPreloading(false);
-            setPreloadPromise(null);
+            if (!abortControllerRef.current?.signal.aborted) {
+              setIsPreloading(false);
+              setPreloadPromise(null);
+            }
           });
       }, delay);
     },
@@ -62,18 +66,22 @@ export function useOnDemandPrefetch() {
       preloadTimeoutRef.current = null;
     }
 
-    if (preloadPromise) {
-      // Cancel the preload promise
-      setPreloadPromise(null);
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
     }
 
+    setPreloadPromise(null);
     setIsPreloading(false);
-  }, [preloadPromise]);
+  }, []);
 
   useEffect(() => {
     return () => {
       if (preloadTimeoutRef.current) {
         clearTimeout(preloadTimeoutRef.current);
+      }
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
       }
     };
   }, []);
@@ -85,7 +93,6 @@ export function useOnDemandPrefetch() {
   };
 }
 
-// On-demand prefetch button component
 interface ModalTriggerPointProps {
   children: React.ReactNode;
   onHoverStart?: () => void;
@@ -106,25 +113,33 @@ export function ModalTriggerPoint({
   onClick,
 }: ModalTriggerPointProps) {
   const { startPreload, cancelPreload, isPreloading } = useOnDemandPrefetch();
+  const [hasStartedPreload, setHasStartedPreload] = useState(false);
 
   const handleMouseEnter = useCallback(() => {
     onHoverStart?.();
-    // Start preloading the provided target
+    setHasStartedPreload(true);
     startPreload(importTarget, preloadDelay);
   }, [onHoverStart, startPreload, preloadDelay, importTarget]);
 
   const handleMouseLeave = useCallback(() => {
     onHoverEnd?.();
-    // Cancel preload if user moves cursor away
     cancelPreload();
   }, [onHoverEnd, cancelPreload]);
 
+  const handleClick = useCallback(() => {
+    if (!hasStartedPreload) {
+      startPreload(importTarget, 0);
+    }
+    // Always call the onClick handler
+    onClick?.();
+  }, [hasStartedPreload, startPreload, importTarget, onClick]);
+
   return (
     <button
-      className={`on-demand-prefetch-btn`}
+      className={`on-demand-prefetch-btn ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {children}
       {isPreloading && <span className="preload-indicator">⏳</span>}
@@ -137,15 +152,36 @@ export function OnDemandPrefetchDemo() {
 
   return (
     <div className="on-demand-prefetch-demo">
-      <h2>On-Demand Prefetch Demo</h2>
+      <h2>On Demand and Smart Preload/Prefetch Demo</h2>
       <p>
-        Hover over the buttons to start preloading components. Move your cursor
-        away to cancel the preload.
+        Experience the power of predictive loading: hover to preload, click to open instantly. 
+        Move your cursor away to cancel unnecessary downloads.
       </p>
 
+      <div className="explanation">
+        <h3>What is On Demand and Smart Preload/Prefetch?</h3>
+        <p>
+          This advanced technique predicts user intent and optimizes loading accordingly. 
+          When you hover over a button, it begins downloading the component in the background. 
+          If you click before preloading finishes, it continues loading on-demand. 
+          If you move away, it immediately cancels to save bandwidth.
+        </p>
+        
+        <div className="benefits">
+          <h4>Key Advantages:</h4>
+          <ul>
+            <li>Lightning-fast opening when preloaded</li>
+            <li>Seamless fallback for immediate clicks</li>
+            <li>Intelligent bandwidth management</li>
+            <li>Zero waste on abandoned interactions</li>
+            <li>Better perceived performance</li>
+          </ul>
+        </div>
+      </div>
+
       <ModalTriggerPoint
-        onHoverStart={() => console.log("Starting modal preload...")}
-        onHoverEnd={() => console.log("Cancelled modal preload")}
+        onHoverStart={() => console.log("Starting background preload...")}
+        onHoverEnd={() => console.log("Cancelled preload")}
         preloadDelay={0}
         className="demo-btn modal-btn"
         importTarget={() =>
@@ -155,7 +191,7 @@ export function OnDemandPrefetchDemo() {
         }
         onClick={() => setShowModal(true)}
       >
-        Preload (hover) & Open Modal (click)
+         Hover to Preload & Click to Open
       </ModalTriggerPoint>
       {showModal && (
         <Suspense fallback={<div>Loading modal...</div>}>
@@ -170,4 +206,3 @@ export function OnDemandPrefetchDemo() {
 }
 
 export default OnDemandPrefetchDemo;
-
