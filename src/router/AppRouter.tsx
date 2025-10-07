@@ -35,6 +35,13 @@ const PrefetchDemoPage = React.lazy(
     )
 );
 
+const WebWorkersDemo = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "performance-web-workers" */ "../topics/performance/web-workers"
+    )
+);
+
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -125,13 +132,7 @@ export function AppRouter() {
           path="/topics/web-workers"
           element={
             <Layout>
-              <TopicPlaceholder
-                topicId="web-workers"
-                title="Web Workers"
-                description="Offload heavy computations to background threads"
-                icon="⚡"
-                color="#f39c12"
-              />
+              <WebWorkersDemo />
             </Layout>
           }
         />

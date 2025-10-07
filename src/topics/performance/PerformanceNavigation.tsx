@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PerformanceNavigation.scss";
 import { SearchIcon } from "@/components/Svg";
-// import { Rocket } from "@/components/Svg";
 
 const performanceTopics = [
   {
@@ -45,7 +44,7 @@ const performanceTopics = [
       "Non-blocking UI",
       "Message passing",
     ],
-    status: "ready",
+    status: "implemented",
   },
   {
     id: "lazy-image",
@@ -187,7 +186,6 @@ export function PerformanceNavigation() {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  // Filter topics based on category and search
   const filteredTopics = performanceTopics.filter((topic) => {
     const matchesCategory =
       !selectedCategory || topic.category === selectedCategory;
@@ -200,7 +198,7 @@ export function PerformanceNavigation() {
     return matchesCategory && matchesSearch;
   });
 
-  // Get unique categories
+
   const categories = [
     ...new Set(performanceTopics.map((topic) => topic.category)),
   ];

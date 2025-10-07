@@ -7,7 +7,7 @@ import { useMemo } from "react";
 interface Props {
   onClose: () => void;
   isOpen: boolean;
-  onReady?: () => void; // notify when modal content has mounted
+  onReady?: () => void; 
 }
 
 export default function AsyncHeavyComponentModal(props: Props) {
@@ -29,10 +29,6 @@ export default function AsyncHeavyComponentModal(props: Props) {
           <Modal.Title>Preloaded Modal</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/**
-           * Touch heavy JSON so it stays in the modal chunk and adds parse time.
-           * We compute a simple checksum and counts to ensure it's used.
-           */}
           {useMemo(() => {
             const text = JSON.stringify(heavyData);
             let checksum = 0;
