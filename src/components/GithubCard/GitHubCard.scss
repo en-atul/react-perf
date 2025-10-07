@@ -12,8 +12,8 @@
   overflow: hidden;
 
   &:hover {
-    border-color: #3b82f6;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    border-color: #070707;
+    box-shadow: 0 4px 12px rgba(8, 19, 35, 0.15);
     transform: translateY(-2px);
   }
 
@@ -24,7 +24,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background: linear-gradient(90deg, #060606, #130e20);
   }
 }
 
@@ -71,9 +71,9 @@
   font-size: 0.8rem;
 
   .github-repo {
-    color: #3b82f6;
+    color: #19191b;
     font-weight: 500;
-    background: #eff6ff;
+    background: #02020206;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
   }
@@ -98,8 +98,8 @@
   text-decoration: none;
 
   &:hover {
-    color: #3b82f6;
-    background: #eff6ff;
+    color: #000000;
+    background: #02020206;
   }
 }
 

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PerformanceNavigation.scss";
+import { SearchIcon } from "@/components/Svg";
+// import { Rocket } from "@/components/Svg";
 
 const performanceTopics = [
   {
@@ -10,7 +12,7 @@ const performanceTopics = [
       "Prevent unnecessary re-renders with React.memo, useMemo, and useCallback",
     category: "Runtime Performance",
     icon: "🧠",
-    color: "#e74c3c",
+    color: "#000",
     features: ["React.memo", "useMemo", "useCallback", "Custom memoization"],
     status: "ready",
   },
@@ -21,7 +23,7 @@ const performanceTopics = [
       "Render only visible items in large lists for better performance",
     category: "Runtime Performance",
     icon: "📊",
-    color: "#9b59b6",
+    color: "#000",
     features: [
       "Window scrolling",
       "Dynamic heights",
@@ -36,7 +38,7 @@ const performanceTopics = [
     description: "Offload heavy computations to background threads",
     category: "Runtime Performance",
     icon: "⚡",
-    color: "#f39c12",
+    color: "#000",
     features: [
       "Background processing",
       "Heavy calculations",
@@ -51,7 +53,7 @@ const performanceTopics = [
     description: "Load images based on viewport and network conditions",
     category: "Runtime Performance",
     icon: "🖼️",
-    color: "#3498db",
+    color: "#000",
     features: [
       "Intersection Observer",
       "Network-aware loading",
@@ -67,7 +69,7 @@ const performanceTopics = [
       "Smart prefetching based on user interactions and hover events",
     category: "Runtime Performance",
     icon: "🎯",
-    color: "#27ae60",
+    color: "#000",
     features: [
       "Hover-based prefetch",
       "Cancel on mouse leave",
@@ -82,7 +84,7 @@ const performanceTopics = [
     description: "Load components when they enter the viewport",
     category: "Runtime Performance",
     icon: "👁️",
-    color: "#1abc9c",
+    color: "#000",
     features: [
       "Intersection Observer",
       "Viewport detection",
@@ -97,7 +99,7 @@ const performanceTopics = [
     description: "Serve assets from edge locations for faster delivery",
     category: "Runtime Performance",
     icon: "🌐",
-    color: "#34495e",
+    color: "#000",
     features: [
       "Geographic caching",
       "Edge delivery",
@@ -112,7 +114,7 @@ const performanceTopics = [
     description: "Eliminate unused code from bundles to reduce size",
     category: "Build Optimization",
     icon: "🌳",
-    color: "#8e44ad",
+    color: "#000",
     features: [
       "Dead code elimination",
       "ES6 modules",
@@ -127,7 +129,7 @@ const performanceTopics = [
     description: "Optimize CSS delivery and reduce bundle size",
     category: "Build Optimization",
     icon: "🎨",
-    color: "#e67e22",
+    color: "#000",
     features: [
       "Critical CSS",
       "Code splitting",
@@ -142,7 +144,7 @@ const performanceTopics = [
     description: "Defer non-critical code loading for better performance",
     category: "Build Optimization",
     icon: "⏰",
-    color: "#2c3e50",
+    color: "#000",
     features: [
       "Dynamic imports",
       "Code splitting",
@@ -206,8 +208,11 @@ export function PerformanceNavigation() {
   return (
     <div className="performance-navigation">
       <div className="title-container">
-        <h1 className="title-container-t">🚀 React Performance Playbook</h1>
-        <p>Faster loads, smoother interactions, and smaller bundles—practical techniques that scale.</p>
+        <h1 className="title-container-t">React Performance Playbook</h1>
+        <p>
+          Faster loads, smoother interactions, and smaller bundles—practical
+          techniques that scale.
+        </p>
       </div>
 
       <div className="navigation-controls">
@@ -219,7 +224,9 @@ export function PerformanceNavigation() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
+          <span className="search-icon">
+            <SearchIcon />
+          </span>
         </div>
 
         <div className="category-filters">

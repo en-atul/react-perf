@@ -1,6 +1,6 @@
 .on-demand-prefetch-demo {
   padding: 2rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   color: #1f2937;
 
@@ -135,12 +135,12 @@
 // Demo button variants
 .demo-btn {
   &.modal-btn {
-    border-color: #e74c3c;
-    color: #e74c3c;
+    border-color: #000000;
+    color: #000000;
 
     &:hover {
-      background: #e74c3c;
-      box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+      background: #000000;
+      box-shadow: 0 4px 12px rgba(12, 10, 10, 0.3);
     }
   }
 

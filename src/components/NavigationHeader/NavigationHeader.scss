@@ -1,6 +1,6 @@
 .navigation-header {
   background: white;
-  border-bottom: 2px solid #ecf0f1;
+  border-bottom: 1px solid #ecf0f1;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -86,7 +86,7 @@
 
     .back-btn {
       padding: 0.75rem 1.5rem;
-      background: #95a5a6;
+      background: #0a0a0a;
       color: white;
       border: none;
       border-radius: 8px;
@@ -96,9 +96,9 @@
       font-size: 0.9rem;
 
       &:hover:not(:disabled) {
-        background: #7f8c8d;
+        background: #151616;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(149, 165, 166, 0.3);
+        box-shadow: 0 4px 12px rgba(24, 24, 24, 0.3);
       }
 
       &:disabled {
