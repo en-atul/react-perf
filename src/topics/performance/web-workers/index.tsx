@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { GitHubCard } from "@/components";
-import "../prefetch/on-demand/OnDemandPrefetch.scss";
 import BlockingUI from "./BlockingUI";
 import NonBlockingUI from "./NonBlockingUI";
+
+import "../demo.scss";
+
 
 export default function WebWorkersDemo() {
   const [uiCounter, setUiCounter] = useState(0);

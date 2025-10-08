@@ -42,6 +42,13 @@ const WebWorkersDemo = React.lazy(
     )
 );
 
+const MemoizationDemo = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "performance-memoization" */ "../topics/performance/memoization"
+    )
+);
+
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -102,13 +109,7 @@ export function AppRouter() {
           path="/topics/memoization"
           element={
             <Layout>
-              <TopicPlaceholder
-                topicId="memoization"
-                title="Memoization"
-                description="Prevent unnecessary re-renders with React.memo, useMemo, and useCallback"
-                icon="🧠"
-                color="#e74c3c"
-              />
+              <MemoizationDemo />
             </Layout>
           }
         />
