@@ -1,0 +1,477 @@
+.on-demand-prefetch-demo {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: #1f2937;
+
+  h2 {
+    color: #111827;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    color: #111827;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  h4 {
+    color: #111827;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: #374151;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  .explanation {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+
+    p {
+      color: #374151;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .benefits {
+    margin-top: 1rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        color: #374151;
+        padding: 0.4rem 0;
+        position: relative;
+        padding-left: 1.2rem;
+        font-size: 0.95rem;
+
+        &::before {
+          content: "•";
+          color: #2563eb;
+          font-weight: bold;
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  .demo-btn {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: #111827;
+    border: 2px solid #111827;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin: 1rem 0;
+
+    &:hover {
+      background: #111827;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.demo-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.on-demand-prefetch-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #111827;
+  background: white;
+  color: #111827;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background: #111827;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &.preloading {
+    background: #f39c12;
+    border-color: #f39c12;
+    color: white;
+    animation: pulse 1.5s infinite;
+  }
+
+  .preload-indicator {
+    animation: spin 1s linear infinite;
+  }
+}
+
+// Demo button variants
+.demo-btn {
+  &.modal-btn {
+    border-color: #000000;
+    color: #000000;
+
+    &:hover {
+      background: #000000;
+      box-shadow: 0 4px 12px rgba(12, 10, 10, 0.3);
+    }
+  }
+
+  &.heavy-btn {
+    border-color: #9b59b6;
+    color: #9b59b6;
+
+    &:hover {
+      background: #9b59b6;
+      box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+    }
+  }
+}
+
+.demo-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 0.75rem 1.5rem;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+  }
+}
+
+.heavy-component-container {
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 2px solid #9b59b6;
+  border-radius: 12px;
+  background: #f8f9fa;
+
+  h3 {
+    color: #9b59b6;
+    margin-bottom: 1rem;
+  }
+
+  .close-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+
+    &:hover {
+      background: #c0392b;
+    }
+  }
+}
+
+.heavy-component {
+  .calculating {
+    text-align: center;
+    padding: 2rem;
+
+    .spinner {
+      font-size: 2rem;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #666;
+      font-size: 1.1rem;
+    }
+  }
+
+  .results {
+    h4 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+
+      strong {
+        color: #2c3e50;
+      }
+    }
+  }
+
+  .data-preview {
+    margin-top: 1.5rem;
+
+    h5 {
+      color: #34495e;
+      margin-bottom: 1rem;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 0.5rem;
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+
+      .data-item {
+        padding: 0.25rem 0.5rem;
+        background: #ecf0f1;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        text-align: center;
+        font-family: monospace;
+      }
+    }
+  }
+
+  .component-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #e8f5e8;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+
+    h4 {
+      color: #27ae60;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0.25rem 0;
+        color: #2c3e50;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.advanced-prefetch-demo {
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 2px solid #3498db;
+  border-radius: 12px;
+  background: #f8f9fa;
+
+  h2 {
+    color: #3498db;
+    margin-bottom: 1rem;
+  }
+
+  .prefetch-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .prefetch-btn {
+    padding: 1rem 1.5rem;
+    border: 2px solid #3498db;
+    background: white;
+    color: #3498db;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 200px;
+
+    &:hover {
+      background: #3498db;
+      color: white;
+    }
+
+    &.preloading {
+      background: #f39c12;
+      border-color: #f39c12;
+      color: white;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+
+      .progress-fill {
+        height: 100%;
+        background: white;
+        transition: width 0.3s ease;
+      }
+    }
+  }
+
+  .open-modal-btn {
+    padding: 1rem 1.5rem;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      background: #229954;
+    }
+
+    &:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+    }
+  }
+
+  .prefetch-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #e8f5e8;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+
+    h4 {
+      color: #27ae60;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0.25rem 0;
+        color: #2c3e50;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .on-demand-prefetch-demo {
+    padding: 1rem;
+  }
+
+  .demo-buttons,
+  .demo-actions {
+    flex-direction: column;
+  }
+
+  .on-demand-prefetch-btn,
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .data-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  }
+
+  .prefetch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prefetch-controls {
+    flex-direction: column;
+  }
+
+  .prefetch-btn {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tips {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  border: 2px solid #0ca3f5;
+  border-radius: 12px;
+  background: #4fa0f704;
+
+  h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+  }
+
+  ol {
+    padding-left: 3rem;
+    color: #2c3e50;
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+  }
+}

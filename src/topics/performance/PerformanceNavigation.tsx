@@ -13,7 +13,7 @@ const performanceTopics = [
     icon: "🧠",
     color: "#000",
     features: ["React.memo", "useMemo", "useCallback", "Custom memoization"],
-    status: "ready",
+    status: "implemented",
   },
   {
     id: "virtualization",
